@@ -90,7 +90,6 @@ def page(site, title, depth, crumbs, body, description=""):
 <main>
 {body}
 </main>
-<footer class="foot">{e(site['author'])} · mods for Project Zomboid and Outward</footer>
 <script src="{up}assets/site.js" defer></script>
 </body>
 </html>
@@ -111,22 +110,30 @@ def mod_card(game, mod, prefix):
 
 def mod_list(game, prefix):
     if not game["mods"]:
-        return '<p class="empty">Nothing here yet.</p>'
+        return "" if game.get("links") else '<p class="empty">Nothing here yet.</p>'
     return '<div class="cards">' + "\n".join(mod_card(game, m, prefix) for m in game["mods"]) + "</div>"
 
 
+def link_row(links):
+    if not links:
+        return ""
+    return '<p class="links">' + " ".join(
+        f'<a class="btn" href="{e(l["url"])}">{e(l["label"])}</a>' for l in links) + "</p>"
+
+
 def build_home(site):
-    parts = [f'<section class="hero"><h1>{e(site["title"])}</h1><p>{e(site["tagline"])}</p></section>']
+    parts = []
     for g in site["games"]:
         parts.append(f"""<section class="game">
 <h2><a href="{g['id']}/">{e(g['name'])}</a></h2>
+{link_row(g.get('links'))}
 {mod_list(g, g['id'] + '/')}
 </section>""")
     return page(site, site["title"], 0, [], "\n".join(parts))
 
 
 def build_game(site, g):
-    body = f"""<section class="hero"><h1>{e(g['name'])}</h1><p>{e(g.get('summary', ''))}</p></section>
+    body = f"""<section class="hero"><h1>{e(g['name'])}</h1><p>{e(g.get('summary', ''))}</p>{link_row(g.get('links'))}</section>
 <section class="game">{mod_list(g, '')}</section>"""
     return page(site, g["name"], 1, [(g["name"], g["id"] + "/")], body, g.get("summary", ""))
 
@@ -146,10 +153,7 @@ def build_mod(site, g, mod):
         head.append(f'<span class="tag">{e(mod["status"])}</span>')
     if mod.get("summary"):
         head.append(f'<p class="lead">{e(mod["summary"])}</p>')
-    links = mod.get("links", [])
-    if links:
-        head.append('<p class="links">' + " ".join(
-            f'<a class="btn" href="{e(l["url"])}">{e(l["label"])}</a>' for l in links) + "</p>")
+    head.append(link_row(mod.get("links")))
     head.append("</div></section>")
 
     prose = "".join(f"<p>{e(p)}</p>" for p in mod.get("description", []))

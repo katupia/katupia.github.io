@@ -1,6 +1,6 @@
 {
-  "title": "Katupia",
-  "tagline": "External pages and media for Tchernobill's mods.",
+  "title": "Tchernobill",
+  "tagline": "External pages and media for Tchernobill's Project Zomboid, Outward and Valheim mods.",
   "baseUrl": "https://katupia.github.io",
   "author": "Tchernobill",
   "games": [
@@ -27,13 +27,37 @@
             }
           }
         }
+      ],
+      "links": [
+        {
+          "label": "Steam Workshop",
+          "url": "https://steamcommunity.com/profiles/76561198329871201/myworkshopfiles/?p=1&numperpage=30"
+        }
       ]
     },
     {
       "id": "outward",
       "name": "Outward",
       "summary": "Outward Definitive Edition mods.",
-      "mods": []
+      "mods": [],
+      "links": [
+        {
+          "label": "Thunderstore",
+          "url": "https://thunderstore.io/c/outward/p/Tchernobill/"
+        }
+      ]
+    },
+    {
+      "id": "valheim",
+      "name": "Valheim",
+      "summary": "Valheim mods.",
+      "mods": [],
+      "links": [
+        {
+          "label": "Thunderstore",
+          "url": "https://thunderstore.io/c/valheim/p/Tchernobill/"
+        }
+      ]
     }
   ]
 }
