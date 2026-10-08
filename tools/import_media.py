@@ -4,11 +4,11 @@
       [--captions UI.json --key-prefix UI_TME_Emote_] [--force]
 
 Existing files are kept unless --force (published URLs must not change content silently).
-Captions are merged into <section>/captions.json; for a file "APT.avif" the keys tried are
-<prefix>APT then <prefix>APT. (entry names may end with a dot that is not in the file name).
+Captions are merged into <section>/captions.json; a file matches the key whose suffix
+has the same letters and digits as its name ("APT." -> APT.avif, "bye-bye-bye" -> bye_bye_bye.avif).
 Run tools/build.py afterwards.
 """
-import argparse, json, os, shutil, sys
+import argparse, json, os, re, shutil, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -28,6 +28,15 @@ def main():
     if a.captions:
         with open(a.captions, encoding="utf-8") as f:
             texts = json.load(f)
+    # file names are sanitized entry names ("APT.", "bobbin'", "boy's_a_liar", "bye-bye-bye"):
+    # compare letters and digits only
+    def norm(t):
+        return re.sub(r"[^a-z0-9]", "", t.casefold())
+
+    by_stem = {}
+    for key, text in texts.items():
+        if key.startswith(a.key_prefix):
+            by_stem.setdefault(norm(key[len(a.key_prefix):]), text)
     cap_path = os.path.join(dest, "captions.json")
     caps = {}
     if os.path.isfile(cap_path):
@@ -43,10 +52,8 @@ def main():
             shutil.copy2(src, out)
             print(f"copied {name} ({os.path.getsize(out) // 1024} kB)")
         stem = os.path.splitext(name)[0]
-        for key in (a.key_prefix + stem, a.key_prefix + stem + "."):
-            if key in texts:
-                caps[name] = texts[key]
-                break
+        if norm(stem) in by_stem:
+            caps[name] = by_stem[norm(stem)]
 
     if caps:
         with open(cap_path, "w", encoding="utf-8", newline="\n") as f:
