@@ -1,0 +1,59 @@
+{
+  "mod": "TooManyEmotes",
+  "game": "pz",
+  "page": "https://katupia.github.io/pz/TooManyEmotes/",
+  "sections": {
+    "loops": [
+      {
+        "url": "https://katupia.github.io/pz/TooManyEmotes/media/loops/a_bar_song.avif",
+        "caption": "A Bar Song",
+        "bytes": 221112
+      },
+      {
+        "url": "https://katupia.github.io/pz/TooManyEmotes/media/loops/a_tear_in_space.avif",
+        "caption": "A Tear In Space",
+        "bytes": 205640
+      },
+      {
+        "url": "https://katupia.github.io/pz/TooManyEmotes/media/loops/afk.avif",
+        "caption": "Afk",
+        "bytes": 114637
+      },
+      {
+        "url": "https://katupia.github.io/pz/TooManyEmotes/media/loops/all_I_want_for_christmas_is_you.avif",
+        "caption": "All I Want For Christmas Is You",
+        "bytes": 219871
+      },
+      {
+        "url": "https://katupia.github.io/pz/TooManyEmotes/media/loops/APT.avif",
+        "caption": "APT.",
+        "bytes": 304299
+      },
+      {
+        "url": "https://katupia.github.io/pz/TooManyEmotes/media/loops/attraction.avif",
+        "caption": "Attraction",
+        "bytes": 176409
+      },
+      {
+        "url": "https://katupia.github.io/pz/TooManyEmotes/media/loops/bad_guy.avif",
+        "caption": "Bad Guy",
+        "bytes": 159926
+      },
+      {
+        "url": "https://katupia.github.io/pz/TooManyEmotes/media/loops/beatzbunny.avif",
+        "caption": "Beatzbunny",
+        "bytes": 249781
+      },
+      {
+        "url": "https://katupia.github.io/pz/TooManyEmotes/media/loops/best_mates.avif",
+        "caption": "Best Mates",
+        "bytes": 22856
+      },
+      {
+        "url": "https://katupia.github.io/pz/TooManyEmotes/media/loops/bim_bam_boom.avif",
+        "caption": "Bim Bam Boom",
+        "bytes": 178075
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "title": "Katupia",
+  "tagline": "External pages and media for Tchernobill's mods.",
+  "baseUrl": "https://katupia.github.io",
+  "author": "Tchernobill",
+  "games": [
+    {
+      "id": "pz",
+      "name": "Project Zomboid",
+      "summary": "Build 42 mods.",
+      "mods": [
+        {
+          "id": "TooManyEmotes",
+          "name": "Too Many Emotes",
+          "status": "In development",
+          "summary": "Hundreds of full-body emotes and dances for Build 42, ported from FlipMods' TooManyEmotes (Lethal Company).",
+          "description": [
+            "Every emote is unlocked and reachable from the vanilla emote wheel (Too Many Emotes slice) or from a searchable emote browser with favorites.",
+            "Animations are retargeted from the original Unity humanoid clips onto the Project Zomboid skeleton, fingers included."
+          ],
+          "credits": "Original emotes and animations: FlipMods, TooManyEmotes (MIT license).",
+          "links": [],
+          "sections": {
+            "loops": {
+              "title": "Emote loops",
+              "note": "Captured in game, 256×256, 30 fps, seamless loops (AVIF)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "outward",
+      "name": "Outward",
+      "summary": "Outward Definitive Edition mods.",
+      "mods": []
+    }
+  ]
+}
